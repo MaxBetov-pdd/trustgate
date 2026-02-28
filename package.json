@@ -1,0 +1,23 @@
+{
+  "name": "trustgate",
+  "version": "1.0.0",
+  "description": "Escrow and AI arbitration middleware for x402",
+  "private": true,
+  "workspaces": [
+    "contracts",
+    "server",
+    "client"
+  ],
+  "scripts": {
+    "compile": "npm run compile -w contracts",
+    "test": "npm run test -w contracts",
+    "deploy": "npm run deploy -w contracts",
+    "dev": "concurrently \"npm run dev -w server\" \"npm run dev -w client\"",
+    "build": "npm run build -w client && npm run build -w server",
+    "start": "node server/dist/index.js"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "typescript": "^5.2.2"
+  }
+}

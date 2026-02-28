@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.env
+client/.env
+client/dist/
+server/dist/
+contracts/cache/
+contracts/artifacts/
+contracts/typechain-types/
+*.log
+.DS_Store
+check_balance.js
+address.json

@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: trustgate
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: "10000"
+      - key: TRUSTGATE_PRIVATE_KEY
+        sync: false
+      - key: ESCROW_CONTRACT_ADDRESS
+        value: "0x19617F4170fC1F3d4c053333586aBEf8efd54052"
+      - key: SELLER_WALLET_ADDRESS
+        value: "0xba1023E5b13244dBCD12acC5c823f1d6122d77e5"
+      - key: USDC_ADDRESS
+        value: "0x036CbD53842c5426634e7929541eC2318f3dCF7e"
+      - key: BASE_SEPOLIA_RPC
+        value: "https://sepolia.base.org"
+      - key: X402_FACILITATOR_URL
+        value: "https://www.x402.org/facilitator"
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: VITE_BUYER_PRIVATE_KEY
+        value: "88d5ed4a108742c41e8929afe04048c5137f2ac6bdd3c116a62363b3e2f397f8"
