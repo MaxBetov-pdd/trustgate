@@ -8,7 +8,7 @@ export const PORT = process.env.PORT || 4021;
 export const WS_PORT = process.env.WS_PORT || 4022;
 
 export const OPENAI_API_KEY = process.env.OPENAI_API_KEY || "mock-key";
-export const GEMINI_API_KEY = process.env.GEMINI_API_KEY || "mock-gemini-key";
+export const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY || "mock-openrouter-key";
 export const X402_FACILITATOR_URL = process.env.X402_FACILITATOR_URL || "https://www.x402.org/facilitator";
 
 // Load address.json

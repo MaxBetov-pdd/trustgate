@@ -1,4 +1,4 @@
-import { GEMINI_API_KEY } from "./config";
+import { OPENROUTER_API_KEY } from "./config";
 
 export async function evaluateResult(task: string, criteria: string, result: string) {
     const prompt = `You are an AI Arbiter for a service marketplace. Evaluate the delivery.
@@ -16,21 +16,33 @@ Evaluate the result and output JSON with:
 Respond strictly with JSON object.`;
 
     try {
-        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`, {
+        const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: {
+                "Authorization": `Bearer ${OPENROUTER_API_KEY}`,
+                "Content-Type": "application/json"
+            },
             body: JSON.stringify({
-                contents: [{ role: "user", parts: [{ text: prompt }] }],
-                generationConfig: { responseMimeType: "application/json" }
+                model: "arcee-ai/trinity-large-preview:free",
+                messages: [{ role: "user", content: prompt }],
+                response_format: { type: "json_object" }
             })
         });
 
         if (!response.ok) {
-            throw new Error(`Gemini API error: ${response.statusText}`);
+            throw new Error(`OpenRouter API error: ${response.statusText}`);
         }
 
         const data = await response.json();
-        const outputText = data.candidates[0].content.parts[0].text;
+        let outputText = data.choices[0].message.content;
+
+        // Strip markdown backticks if present
+        if (outputText.startsWith("\`\`\`json")) {
+            outputText = outputText.slice(7, -3);
+        } else if (outputText.startsWith("\`\`\`")) {
+            outputText = outputText.slice(3, -3);
+        }
+
         const output = JSON.parse(outputText || "{}");
 
         return {

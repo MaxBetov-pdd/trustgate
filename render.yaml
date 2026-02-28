@@ -22,7 +22,7 @@ services:
         value: "https://sepolia.base.org"
       - key: X402_FACILITATOR_URL
         value: "https://www.x402.org/facilitator"
-      - key: GEMINI_API_KEY
+      - key: OPENROUTER_API_KEY
         sync: false
       - key: VITE_BUYER_PRIVATE_KEY
         value: "88d5ed4a108742c41e8929afe04048c5137f2ac6bdd3c116a62363b3e2f397f8"
