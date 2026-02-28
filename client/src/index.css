@@ -59,6 +59,7 @@ body {
   font-weight: 700;
   background: linear-gradient(to right, var(--accent-emerald), var(--accent-cyan));
   -webkit-background-clip: text;
+  background-clip: text;
   color: transparent;
 }
 
@@ -672,6 +673,7 @@ body {
   font-size: 0.75rem;
   color: #cbd5e1;
   white-space: pre-wrap;
+  word-break: break-word;
   line-height: 1.5;
 }
 
@@ -683,6 +685,8 @@ body {
   margin: 0;
   line-height: 1.5;
   color: #cbd5e1;
+  white-space: pre-wrap;
+  word-break: break-word;
 }
 
 .tx-link {
@@ -742,8 +746,12 @@ body {
 
   .feed-panel {
     height: auto;
-    max-height: 500px;
+    max-height: none;
     padding-right: 0;
+  }
+
+  .feed-list {
+    overflow-y: visible;
   }
 
   .escrow-details {
@@ -764,6 +772,8 @@ body {
 
   .escrow-title {
     font-size: 0.875rem;
+    white-space: normal;
+    word-break: break-word;
   }
 
   .demo-btn {
