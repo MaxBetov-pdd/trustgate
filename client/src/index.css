@@ -697,3 +697,146 @@ body {
 .tx-link:hover {
   color: #60a5fa;
 }
+
+/* ===== MOBILE RESPONSIVE ===== */
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .header-title h1 {
+    font-size: 1.5rem;
+  }
+
+  .metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .metric-card {
+    padding: 1rem;
+  }
+
+  .metric-value {
+    font-size: 1.25rem;
+  }
+
+  .main-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .panel {
+    padding: 1.25rem;
+    border-radius: 1rem;
+  }
+
+  .feed-panel {
+    height: auto;
+    max-height: 500px;
+    padding-right: 0;
+  }
+
+  .escrow-details {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .escrow-header {
+    padding: 1rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .escrow-actions {
+    gap: 0.5rem;
+  }
+
+  .escrow-title {
+    font-size: 0.875rem;
+  }
+
+  .demo-btn {
+    padding: 0.75rem;
+    font-size: 0.875rem;
+  }
+
+  .custom-form .form-group {
+    gap: 0.25rem;
+  }
+
+  .flow-node {
+    padding: 0.75rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+
+  .flow-node-desc {
+    text-align: left;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0.75rem;
+  }
+
+  .header-title h1 {
+    font-size: 1.25rem;
+  }
+
+  .metrics-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+
+  .metric-card {
+    padding: 0.75rem;
+  }
+
+  .metric-title {
+    font-size: 0.65rem;
+  }
+
+  .metric-value {
+    font-size: 1.1rem;
+  }
+
+  .panel {
+    padding: 1rem;
+    border-radius: 0.75rem;
+  }
+
+  .panel-title {
+    font-size: 1rem;
+  }
+
+  .escrow-header-left {
+    gap: 0.5rem;
+  }
+
+  .escrow-id {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 0.8rem;
+  }
+
+  .score-value {
+    font-size: 1rem;
+  }
+
+  .detail-box {
+    font-size: 0.65rem;
+  }
+}
