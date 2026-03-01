@@ -31,7 +31,7 @@ Without a neutral judge, **the buyer has no recourse** and the seller has no inc
 TrustGate acts as an **HTTP proxy with built-in escrow and AI arbitration**. Any agent can route requests through TrustGate using standard HTTP headers:
 
 ```http
-POST https://trustgate.ai/api/proxy
+POST https://trustgate-o2e6.onrender.com/api/proxy
 X-Target-URL: https://ai-travel-agent.com/book-flight
 X-Escrow-Amount: 1000000
 X-Quality-Criteria: "Must return a valid PNR booking code"
