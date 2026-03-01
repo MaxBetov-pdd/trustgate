@@ -1,7 +1,7 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Base-Sepolia-0052FF?style=for-the-badge&logo=coinbase" />
   <img src="https://img.shields.io/badge/x402-Protocol-6366F1?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/AI_Arbiter-Gemini-FF6F00?style=for-the-badge&logo=google" />
+  <img src="https://img.shields.io/badge/AI_Arbiter-Trinity-FF6F00?style=for-the-badge" />
   <img src="https://img.shields.io/badge/Pinion_OS-Hackathon-10B981?style=for-the-badge" />
 </p>
 
@@ -44,8 +44,8 @@ X-Quality-Criteria: "Must return a valid PNR booking code"
 | 1️⃣ | Buyer agent sends request with x402 payment | `pinion-os` SDK |
 | 2️⃣ | TrustGate verifies payment, locks USDC in smart contract | `TrustGateEscrow.sol` |
 | 3️⃣ | Request is forwarded to the seller's API | Express Proxy |
-| 4️⃣ | Seller's response is evaluated by AI against quality criteria | Gemini AI Arbiter |
-| 5️⃣ | Based on verdict: funds go to seller ✅, back to buyer ❌, or split ⚖️ | Smart Contract |
+| 4️⃣ | Seller's response is evaluated by AI against quality criteria | Trinity AI Arbiter |
+| 5️⃣ | Based on verdict: funds go to seller ✅, back to buyer ❌ | Smart Contract |
 
 The whole flow is **autonomous, on-chain, and zero-trust**.
 
@@ -59,7 +59,7 @@ sequenceDiagram
     participant TG as 🛡️ TrustGate Proxy
     participant SC as ⛓️ Escrow Contract
     participant S as 🔧 Seller API
-    participant AI as 🧠 AI Arbiter (Gemini)
+    participant AI as 🧠 AI Arbiter (Trinity)
 
     B->>TG: POST /api/proxy + headers
     TG-->>B: 402 Payment Required (x402)
@@ -89,7 +89,7 @@ sequenceDiagram
 | **Payment Protocol** | [x402](https://www.x402.org/) / Pinion OS | HTTP-native micropayments |
 | **Smart Contract** | Solidity + OpenZeppelin | On-chain USDC escrow with 3-way resolution |
 | **Blockchain** | Base Sepolia (Coinbase L2) | Fast, cheap transactions |
-| **AI Arbiter** | Google Gemini 2.5 Flash | Independent quality evaluation |
+| **AI Arbiter** | OpenRouter (Trinity AI) | Independent quality evaluation |
 | **Backend** | Express + TypeScript | Proxy server, orchestration |
 | **Frontend** | React + Vite | Real-time dashboard with WebSocket feed |
 
@@ -104,7 +104,7 @@ trustgate/
 ├── server/                 # Express backend
 │   └── src/
 │       ├── index.ts        # Proxy endpoint, x402 middleware, WebSocket
-│       ├── arbiter.ts      # Gemini AI evaluation engine
+│       ├── arbiter.ts      # Trinity AI evaluation engine via OpenRouter
 │       ├── contract.ts     # Ethers.js contract interactions
 │       └── config.ts       # Environment configuration
 ├── client/                 # React frontend
@@ -121,7 +121,7 @@ trustgate/
 
 - Node.js v18+
 - Base Sepolia wallet with ETH (gas) + USDC ([Circle Faucet](https://faucet.circle.com/))
-- [Gemini API Key](https://aistudio.google.com/apikey)
+- [OpenRouter API Key](https://openrouter.ai/)
 
 ### Installation
 
@@ -147,7 +147,7 @@ BASE_SEPOLIA_RPC=https://sepolia.base.org
 X402_FACILITATOR_URL=https://www.x402.org/facilitator
 
 # AI
-GEMINI_API_KEY=YOUR_GEMINI_KEY
+OPENROUTER_API_KEY=YOUR_OPENROUTER_KEY
 
 # Server
 PORT=4021
@@ -166,7 +166,7 @@ Open **http://localhost:5173** — enter a Base Sepolia private key and hit **Go
 
 ## 🎮 Demo Modes
 
-The dashboard includes 3 demo scenarios that demonstrate the full protocol flow with real on-chain transactions:
+The dashboard includes 2 demo scenarios that demonstrate the full protocol flow with real on-chain transactions:
 
 | Demo | Mock Seller Response | AI Score | Escrow Resolution |
 |------|---------------------|----------|-------------------|
